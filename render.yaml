@@ -13,15 +13,10 @@ services:
       - key: DATABASE_URL
         sync: false  # Use secret from Render
       - key: REDIS_URL
-        value: redis://outline-redis:6379
+        sync: false  # Use secret from Render
       - key: URL
         value: https://outline-kwps.onrender.com
       - key: PORT
         value: 3000
       - key: FORCE_HTTPS
         value: "true"
-
-  - type: key-value
-    name: outline-redis
-    plan: starter
-    region: oregon
