@@ -1,15 +1,34 @@
 services:
-  redis:
-    image: redis
-    ports:
-      - "127.0.0.1:6379:6379"
-    user: "redis:redis"
-  postgres:
-    image: postgres
-    ports:
-      - "127.0.0.1:5432:5432"
-    environment:
-      POSTGRES_USER: user
-      POSTGRES_PASSWORD: pass
-      POSTGRES_DB: outline
-    user: "postgres:postgres"
+  - type: web
+    name: outline
+    env: docker
+    repo: https://github.com/ryco-io/outline.git
+    region: oregon
+    plan: standard
+    envVars:
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DATABASE_URL
+        fromService:
+          name: outline-db
+          type: postgres
+      - key: REDIS_URL
+        fromService:
+          name: outline-redis
+          type: redis
+      - key: URL
+        value: https://ryco-outline.onrender.com
+      - key: PORT
+        value: 3000
+      - key: FORCE_HTTPS
+        value: "true"
+
+  - type: postgres
+    name: outline-db
+    plan: standard
+    region: oregon
+
+  - type: redis
+    name: outline-redis
+    plan: standard
+    region: oregon
