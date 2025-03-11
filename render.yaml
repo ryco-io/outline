@@ -13,7 +13,7 @@ services:
       - key: REDIS_URL
         value: redis://outline-redis:6379
       - key: URL
-        value: https://ryco-outline.onrender.com
+        value: https://outline-kwps.onrender.com
       - key: PORT
         value: 3000
       - key: FORCE_HTTPS
