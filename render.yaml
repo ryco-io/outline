@@ -8,6 +8,8 @@ services:
     envVars:
       - key: SECRET_KEY
         generateValue: true
+      - key: UTILS_SECRET
+        generateValue: true
       - key: DATABASE_URL
         sync: false  # Use secret from Render
       - key: REDIS_URL
