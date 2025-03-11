@@ -9,13 +9,9 @@ services:
       - key: SECRET_KEY
         generateValue: true
       - key: DATABASE_URL
-        fromService:
-          name: outline-db
-          type: postgres
+        sync: false  # Use secret from Render
       - key: REDIS_URL
-        fromService:
-          name: outline-redis
-          type: redis
+        value: redis://outline-redis:6379
       - key: URL
         value: https://ryco-outline.onrender.com
       - key: PORT
@@ -23,12 +19,8 @@ services:
       - key: FORCE_HTTPS
         value: "true"
 
-  - type: postgres
-    name: outline-db
-    plan: standard
-    region: oregon
-
-  - type: redis
+  - type: worker
     name: outline-redis
+    env: docker
+    dockerfilePath: ./redis.Dockerfile
     plan: standard
-    region: oregon
