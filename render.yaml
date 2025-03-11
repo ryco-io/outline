@@ -21,8 +21,7 @@ services:
       - key: FORCE_HTTPS
         value: "true"
 
-  - type: worker
+  - type: key-value
     name: outline-redis
-    env: docker
-    dockerfilePath: ./redis.Dockerfile
     plan: starter
+    region: oregon
