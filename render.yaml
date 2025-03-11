@@ -4,7 +4,7 @@ services:
     env: docker
     repo: https://github.com/ryco-io/outline.git
     region: oregon
-    plan: standard
+    plan: starter
     envVars:
       - key: SECRET_KEY
         generateValue: true
@@ -23,4 +23,4 @@ services:
     name: outline-redis
     env: docker
     dockerfilePath: ./redis.Dockerfile
-    plan: standard
+    plan: starter
