@@ -58,8 +58,8 @@ export const renderApp = async (
   } = {}
 ) => {
   const {
-    title = env.APP_NAME,
-    description = "A modern team knowledge base for your internal documentation, product specs, support answers, meeting notes, onboarding, &amp; more…",
+    title = 'Company Documentation',
+    description = "A modern team knowledge base for everything at ryco.io — from internal documentation and product specs to educator support answers, onboarding guides, meeting notes, and more.",
     canonical = "",
     shortcutIcon = `${env.CDN_URL || ""}/images/favicon-32.png`,
     allowIndexing = true,
